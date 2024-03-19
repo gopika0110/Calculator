@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to the Calculator!</title>
+    <style>
+      body {
+        margin: 0%;
+      }
+      .maincontainer {
+        background-color: black;
+        height: 750px;
+        width: 480px;
+        padding: 30px;
+        margin: 10px;
+        margin-left: 680px;
+        border-radius: 35px;
+      }
+      div h1 {
+        background-color: grey;
+        padding: 40px;
+        border: 1px solid white;
+        border-radius: 20px;
+        text-align: end;
+        color: white;
+      }
+      .numbers {
+        display: flex;
+        justify-content: space-around;
+        font-size: larger;
+      }
+      .numbers button {
+        font-weight: bolder;
+        font-size: x-large;
+        font-family: "Times New Roman", Times, serif;
+        margin-top: 35px;
+        border-radius: 30px;
+        color: white;
+        box-shadow: 2px 3px 5px grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maincontainer">
+      <div class="resultarea">
+        <h1 id="output" style="font-family: Arial, Helvetica, sans-serif">0</h1>
+      </div>
+
+      <div class="numbers">
+        <button
+          id="allclear"
+          type="button"
+          style="padding: 25px; background-color: rgb(165, 42, 42)"
+        >
+          AC
+        </button>
+        <button
+          type="button"
+          style="padding: 25px; background-color: rgb(165, 42, 42)"
+        >
+          DE
+        </button>
+        <button
+          onclick="handleOperations('%')"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          %
+        </button>
+        <button
+          onclick="handleOperations('/')"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          /
+        </button>
+      </div>
+
+      <div class="numbers">
+        <button
+          onclick="handleNumbers(7)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          7
+        </button>
+        <button
+          onclick="handleNumbers(8)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          8
+        </button>
+        <button
+          onclick="handleNumbers(9)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          9
+        </button>
+        <button
+          onclick="handleOperations('*')"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          *
+        </button>
+      </div>
+
+      <div class="numbers">
+        <button
+          onclick="handleNumbers(4)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          4
+        </button>
+        <button
+          onclick="handleNumbers(5)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          5
+        </button>
+        <button
+          onclick="handleNumbers(6)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          6
+        </button>
+        <button
+          onclick="handleOperations('-')"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 40px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          -
+        </button>
+      </div>
+
+      <div class="numbers">
+        <button
+          onclick="handleNumbers(1)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          1
+        </button>
+        <button
+          onclick="handleNumbers(2)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          2
+        </button>
+        <button
+          onclick="handleNumbers(3)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          3
+        </button>
+        <button
+          onclick="handleOperations('+')"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          +
+        </button>
+      </div>
+
+      <div class="numbers">
+        <button
+          onclick="handleNumbers(0)"
+          type="button"
+          style="padding: 25px; background-color: rgb(155, 161, 157)"
+        >
+          00
+        </button>
+        <button
+          onclick="handleNumbers(0)"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          0
+        </button>
+        <button
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(155, 161, 157);
+          "
+        >
+          .
+        </button>
+        <button
+          onclick="handleResult()"
+          type="button"
+          style="
+            padding: 25px;
+            padding-right: 35px;
+            background-color: rgb(50, 112, 227);
+          "
+        >
+          =
+        </button>
+      </div>
+    </div>
+    <script>
+      var data = " ";
+      function updateResult(value) {
+        document.getElementById("output").innerHTML = value;
+      }
+      function handleNumbers(number) {
+        data = data + number;
+        console.log(data);
+        updateResult(data);
+      }
+      function handleOperations(operator) {
+        data = data + operator;
+        console.log(data);
+        updateResult(data);
+      }
+      function handleResult() {
+        var result = eval(data);
+        updateResult(result);
+      }
+    </script>
+  </body>
+</html>
